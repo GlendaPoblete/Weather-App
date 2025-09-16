@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import WeatherCard from './components/WeatherCard';
 import './App.css';
 
-console.log('API KEY from env:', process.env.REACT_APP_OWM_API_KEY);
+console.log('API KEY from env:', process.env.REACT_APP_OPENWEATHER_API_KEY);
 
 const INITIAL_CITIES = ['Manila', 'Bern', 'Delhi', 'Lilongwe', 'Islamabad'];
-const API_KEY = process.env.REACT_APP_OWM_API_KEY;
+const API_KEY = process.env.REACT_APP_OPENWEATHER_API_KEY;
 const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 // ASYNC FETCH FUNCTION
