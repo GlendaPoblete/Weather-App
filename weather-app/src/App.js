@@ -73,25 +73,24 @@ export default function App() {
     if (newName.trim()) loadDefaultCityWeather(newName);
   }
 
-  // HANDLE SEARCH
+  // R-HANDLE SEARCH
   function handleSearch(city) {
     const key = city.toLowerCase();
-    if (searchedCities.includes(city)) return; // avoid duplicates
+    setSearchedCities([city]);
 
-    setSearchedCities([...searchedCities, city]);
-    setSearchedWeather((m) => ({ ...m, [key]: { status: "loading" } }));
+  setSearchedWeather((m) => ({ ...m, [key]: { status: "loading" } }));
 
-    fetchWeatherData(city)
-      .then((data) =>
-        setSearchedWeather((m) => ({ ...m, [key]: { status: "ready", data } }))
-      )
-      .catch((err) =>
-        setSearchedWeather((m) => ({
-          ...m,
-          [key]: { status: "error", error: err.message },
-        }))
-      );
-  }
+  fetchWeatherData(city)
+    .then((data) =>
+      setSearchedWeather((m) => ({ ...m, [key]: { status: "ready", data } }))
+    )
+    .catch((err) =>
+      setSearchedWeather((m) => ({
+        ...m,
+        [key]: { status: "error", error: err.message },
+      }))
+    );
+}
 
   return (
     <div className="container">
@@ -132,7 +131,7 @@ export default function App() {
         ))}
       </div>
 
-      {/* SEARCH BAR FOR EXTRA CITIES */}
+      {/* R-SEARCH BAR FOR EXTRA CITIES */}
       <div className="search-section">
         <h2>Search for a City</h2>
         <SearchWeather onSearch={handleSearch} />
