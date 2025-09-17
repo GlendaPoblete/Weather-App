@@ -103,33 +103,28 @@ export default function App() {
 
       {/* DEFAULT WEATHER CARDS */}
       <main className="grid">
-        {defaultCities.map((c) => {
-          const key = c.toLowerCase();
-          const entry = defaultWeather[key];
-          return (
-            <WeatherCard
-              key={key}
-              cityLabel={c}
-              status={entry?.status || "loading"}
-              data={entry?.data}
-              error={entry?.error}
-            />
-          );
-        })}
-      </main>
+  {defaultCities.map((c, index) => {
+    const key = c.toLowerCase();
+    const entry = defaultWeather[key];
+    return (
+      <div key={key} className="card-wrapper">
+     
+        <WeatherCard
+          cityLabel={c}
+          status={entry?.status || "loading"}
+          data={entry?.data}
+          error={entry?.error}
+        />
 
-      {/* EDITABLE DEFAULT CITIES */}
-      <div className="edit-cities">
-        <h2>Edit Default Cities</h2>
-        {defaultCities.map((city, index) => (
-          <input
-            key={index}
-            className="city-edit-input"
-            value={city}
-            onChange={(e) => handleEditCity(index, e.target.value)}
-          />
-        ))}
+        <input
+          className="city-edit-input"
+          value={c}
+          onChange={(e) => handleEditCity(index, e.target.value)}
+        />
       </div>
+    );
+  })}
+</main>
 
       {/* R-SEARCH BAR FOR EXTRA CITIES */}
       <div className="search-section">
