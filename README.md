@@ -1,4 +1,7 @@
-# Weather-App
+# Weather Checker
+A simple, responsive weather application built with React that fetches real-time weather data from the OpenWeatherMap API.
+
+The app displays current weather conditions for a set of default cities and allows users to search for additional locations.
 
 # Getting Started with Create React App
 
